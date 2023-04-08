@@ -1,0 +1,96 @@
+Create Database and tables -- Done 
+Set up main --
+
+Pages --
+
+set up Index js for Redux--
+    1 add in provider 
+        ex. 
+        // Be sure to add the Provider! Just wrap App with it. Don't copy and paste from lecture, that will cause issues.
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+    <React.StrictMode>
+        <Provider store={storeInstance}>
+        <App />
+        </Provider>
+    </React.StrictMode>
+);
+    
+    2 import 
+/** TODO: import REDUX **/
+import { createStore ,combineReducers, applyMiddleware} from 'redux'
+import { Provider } from 'react-redux';
+import logger from 'redux-logger'
+    
+    3 Reducers 
+        ex. const firstName = (state ='', action)=> {
+    if(action.type === 'SET_FIRST_NAME'){
+        //new value of firstName
+        return action.payload
+    } 
+    //Reducers always return state (Existing value) by default
+    return state
+    }
+
+    4 Store 
+        ex. /** TODO: Create store */
+const storeInstance = createStore(
+    combineReducers(
+        {
+            goatSightings,
+            firstName,
+            //OTHER REDUCERS ADDED HERE
+        }
+    ),
+    //Set up logger
+    applyMiddleware(logger)
+    )
+
+
+Home Page 
+--Miguel
+Dom needs to update with the menu. 
+    axios GET pizza db , Material UI Card (pick standard) 
+    , Add to cart button (with increment decrement --stretch), 
+    next button --> Order details 
+    pass props(pizzaGET() )
+    https://github.com/acidelia/react-flippy-material-ui
+Order Details Page
+--Mitch
+Form with Name, Address ( street, city, zip)
+axios POST --orders db
+axios GET --orders db
+option to set pickup or delievery 
+Top right should have total cost of order. Price is in pizza. (pass prop from menu)
+Button for Checkout Page
+pass Prop (ordersGET () )
+
+CheckoutPage 
+--Ryan
+Show user info and Price detail (coming in as props)
+    --Order ID
+Table with each pizza, each row is indexed on the Pizza ID
+
+Checkout Button --axios POST lineItem , bring up confirmation saying order 
+is placed. (look at sweetAlert), clears out current cart. 
+takes back to homepage. 
+-- Show total Bold somewhere
+Admin Orders 
+--Cory 
+not showning in Navigation Bar, but create URL
+shows name, time, order total, pizza type for each order placed.
+--show as table (set up to filter)
+
+
+High --Every page should have HOME button. 
+Low --Hit Cart and cart Count > 0 and User info avaible. 
+then navigage to cart. 
+High -- Order total on Every Page. -Admin
+    in header at upper right. 
+
+--Make Branches. 
+
+
+
+
+
