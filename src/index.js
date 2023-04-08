@@ -36,9 +36,11 @@ const storeInstance = createStore(
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <Provider store={storeInstance}>
+    
     <React.StrictMode>
+        <Provider store={storeInstance}>
         <App />
+        </Provider>
     </React.StrictMode>
-    </Provider>
+    
 );
