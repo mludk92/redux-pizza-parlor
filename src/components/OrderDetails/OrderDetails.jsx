@@ -1,16 +1,34 @@
 import { useState } from 'react';
 import './OrderDetails.css';
-
+import axios from 'axios';
 function OrderDetails() {
   const [name, setName] = useState('Name');
   const [city, setCity] = useState('City');
   const [zipCode, setZipCode] = useState('Zip Code');
   const [streetAddress, setStreetAddress] = useState('Street Address');
-  const [deliveryOption, setDeliveryOption] = useState('Pick Up');
+  const [deliveryOption, setDeliveryOption] = useState('Delivery');
 
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle form submission here
+
+  axios.post('/api/order', 
+  {customer_name: name,
+    street_address: streetAddress,
+    city: city,
+    zip: zipCode,
+    type: deliveryOption,
+    total: 10,
+    pizzas: 3}).then(response => {
+        //clear inputs
+        setName('name');
+        setCity('City');
+        setZipCode('Zip Code');
+        setStreetAddress('Street Address');
+        setDeliveryOption('Delivery')
+    }).catch((error => {
+        console.log(`Error in Post Order ${error}`)
+    }))
   }
 
   return (
@@ -22,7 +40,7 @@ function OrderDetails() {
         </li>
         <li>
             <input type="text" name="field3" class="field-style field-split align-left" placeholder={city} onChange={(e) => setCity(e.target.value)} />
-            <input type="number" name="field4" class="field-style field-split align-right" placeholder={zipCode} onChange={(e) => setZipCode(e.target.value)} />
+            <input type="text" name="field4" class="field-style field-split align-right" placeholder={zipCode} onChange={(e) => setZipCode(e.target.value)} />
         </li>
         <li>
         <input type="text" name="field5" class="field-style field-full align-none" placeholder={streetAddress} onChange={(e) => setStreetAddress(e.target.value)} />
