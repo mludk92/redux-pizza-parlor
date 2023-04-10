@@ -4,13 +4,9 @@ import './App.css';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import OrderDetails from '../OrderDetails/OrderDetails';
 import Home from '../Home/Home';
-
 function App() {
-  
-
   return (
     <div className='App'>
-      
       <Router>
         {/* routers witch wich view is showing based on the url */}
         <ul>
@@ -27,7 +23,6 @@ function App() {
           <Home />
         </Route>
         {/* if the url is /#/ display the Home component */}
-
         {/* Client side route params */}
         <Route exact path="/orders">
           <OrderDetails />
@@ -36,5 +31,4 @@ function App() {
     </div>
   );
 }
-
 export default App;

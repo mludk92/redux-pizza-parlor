@@ -1,20 +1,35 @@
-import React from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import './OrderDetails.css'
 
-function OrderDetails () {
-    const history = useHistory()
+function OrderDetails() {
+  return (
+    <div> 
+    <form class="form-style-9">
+        <ul>
+        <li>
+            <input type="text" name="field1" class="field-style field-full align-none" placeholder="Name" />
+            
 
-    const handleClick = (e) => {
-      //... submit form followed by history.push 
-      history.push('/') //go home "/"
-      //usually goes in the .then to confirm server worked correctly
-  
-    }
-    return (
-        <div>
-        <div><h1>Order Details</h1></div>
-        </div>
-    )
+        </li>
+        <li>
+            <input type="text" name="field3" class="field-style field-split align-left" placeholder="City" />
+            <input type="number" name="field4" class="field-style field-split align-right" placeholder="Zip Code" />
+        </li>
+        <li>
+        <input type="text" name="field5" class="field-style field-full align-none" placeholder="Street Address" />
+        </li>
+        <li>
+        <select type="text" name="field6" >
+        <option value="Pick Up">PickUp</option>
+        <option value="Delivery">Delivery</option>
+        </select>
+        </li>
+        <li>
+        <input type="submit" value="Submit Order" />
+        </li>
+        </ul>
+    </form>
+    </div>    
+  );
 }
 
-export default OrderDetails
+export default OrderDetails;
