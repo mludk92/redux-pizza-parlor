@@ -19,9 +19,15 @@ function OrderDetails() {
     zip: zipCode,
     type: deliveryOption,
     total: 10,
-    pizzas: 3}).then(response => {
+    pizzas: [{
+      id: "1",
+      quantity: "1"
+    },{
+      id: "2",
+      quantity: "1"
+    }]}).then(response => {
         //clear inputs
-        setName('name');
+        setName('Name');
         setCity('City');
         setZipCode('Zip Code');
         setStreetAddress('Street Address');
