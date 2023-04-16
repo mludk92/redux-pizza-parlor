@@ -1,0 +1,25 @@
+
+.AdminOrders {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  .AdminOrders table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .AdminOrders th,
+  .AdminOrders td {
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    text-align: left;
+  }
+  
+  .AdminOrders th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
