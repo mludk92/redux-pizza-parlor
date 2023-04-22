@@ -17,8 +17,8 @@ function OrderDetails() {
     street_address: streetAddress,
     city: city,
     zip: zipCode,
-    type: deliveryOption,
     total: 10,
+    type: deliveryOption,
     pizzas: [{
       id: "1",
       quantity: "1"
