@@ -1,5 +1,6 @@
 import React from 'react';
-import axios from 'axios';
+import './App.css';
+import AdminOrders from '..//AdminOrders';
 import './App.css';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import OrderDetails from '../OrderDetails/OrderDetails';
@@ -18,6 +19,9 @@ function App() {
           <li>
             <Link to="/orders">Order Details</Link>
           </li>
+          <li>
+            <Link to="/admin">Admin Orders</Link>
+          </li>
         </ul>
         <Route exact path="/">
           <Home />
@@ -27,6 +31,9 @@ function App() {
         <Route exact path="/orders">
           <OrderDetails />
         </Route>
+        <Route exact path="/admin">
+          <AdminOrders />
+        </Route> 
       </Router>
     </div>
   );
