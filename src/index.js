@@ -4,8 +4,13 @@ import './index.css';
 import App from './components/App/App';
 import { createStore ,combineReducers, applyMiddleware} from 'redux'
 import { Provider } from 'react-redux';
+import createSagaMiddleware from 'redux-saga'
 import logger from 'redux-logger'
+import axios from 'axios'
+import {takeEvery, put} from 'redux-saga/effects'
 
+
+//!---------------------------------------------------
 //Reducers store data
 
 const orderId = (state = 0, action)=>{
@@ -17,22 +22,56 @@ const orderId = (state = 0, action)=>{
 }
     return state 
 }
+//ORDER LIST
+const orderList = (state = [], action) => {
+    switch (action.type) {
+      case 'ADD_ORDER':
+        return action.payload
+      default:
+        return state;
+    }
+  };
+ 
+//!---------------------------------------------------
+// create generators 
+function* getOrderList() {
+    try {
+      const orders = yield axios.get('api/order')
+      yield put({type: 'ADD_ORDER', payload: orders.data })
+    } catch (error){
+      console.log (`error in GET ${error}`)
+    }
+  }
 
+  //!---------------------------------------------------
+  // create saga store
+  function* rootSaga() {
+    yield takeEvery('FETCH_ORDERS', getOrderList)
+  }
+
+  //!---------------------------------------------------
+  //set up saga middleware
+  const sagaMiddleware = createSagaMiddleware();
 /** TODO: Create store */
 
+//!---------------------------------------------------
 const storeInstance = createStore(
     combineReducers(
         {
             orderId,
+            orderList,
             //OTHER REDUCERS ADDED HERE
         }
     ),
     //Set up logger
-    applyMiddleware(logger)
+    applyMiddleware(sagaMiddleware,logger)
 
 )
 
+  //start saga middleware
+  sagaMiddleware.run(rootSaga);
 
+//!---------------------------------------------------
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
