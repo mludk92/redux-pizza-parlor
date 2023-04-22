@@ -1,32 +1,41 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import AdminOrders from '..//AdminOrders';
 import './App.css';
-
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import OrderDetails from '../OrderDetails/OrderDetails';
+import Home from '../Home/Home';
 function App() {
-
   return (
     <div className='App'>
-      {/* Wrap the application with React Router */}
       <Router>
-      <header className='App-header'>
-        <h1 className='App-title'>Prime Pizza</h1>
-      </header>
-
-      {/* Define routes for different components */}
-      <Switch>
-        {/* Add a route for the AdminOrders components */}
-        <Route path="/admin" component={AdminOrders} />
-        {/* Other routes can be added here */}
-      </Switch>
-  
-      <img src='images/pizza_photo.png' />
-      <p>Pizza is great.</p>
+        {/* routers witch wich view is showing based on the url */}
+        <ul>
+          <li>
+            {/* Link is basically a <a href="/"> Home</a> */}
+            {/* use Text dont use a button tag */}
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/orders">Order Details</Link>
+          </li>
+          <li>
+            <Link to="/admin">Admin Orders</Link>
+          </li>
+        </ul>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        {/* if the url is /#/ display the Home component */}
+        {/* Client side route params */}
+        <Route exact path="/orders">
+          <OrderDetails />
+        </Route>
+        <Route exact path="/admin">
+          <AdminOrders />
+        </Route> 
       </Router>
-  
     </div>
   );
 }
-
 export default App;

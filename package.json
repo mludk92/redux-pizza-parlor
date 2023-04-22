@@ -2,8 +2,11 @@
   "name": "redux-pizza-parlor",
   "version": "0.2.0",
   "private": true,
-  "proxy": "http://localhost:5000",
+  "proxy": "http://localhost:5001",
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/material": "^5.11.16",
     "axios": "^0.21.1",
     "pg": "^8.2.1",
     "react": "^18.2.0",
@@ -12,7 +15,8 @@
     "react-router-dom": "^5.3.4",
     "react-scripts": "^5.0.1",
     "redux": "^4.1.2",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "redux-saga": "^1.2.3"
   },
   "devDependencies": {
     "nodemon": "^1.18.4"
