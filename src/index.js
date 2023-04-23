@@ -24,7 +24,11 @@ const cart = (state = [], action) => {
     return[...state, action.payload];
   } else if (action.type === 'CLEAR_CART'){
     return [];
-  }
+  } 
+  // else if (action.type === 'REMOVE_ITEM'){
+  //   return [...state,
+  //   cart:state.items.filter(item => item !== action.payload) ]
+  // }
   return state;
 }
 
