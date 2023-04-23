@@ -12,6 +12,25 @@ import {takeEvery, put} from 'redux-saga/effects'
 
 //!---------------------------------------------------
 //Reducers store data
+const pizzas = (state = [], action) => {
+    if(action.type === 'SET_PIZZA_LIST'){
+      return action.payload;
+    }
+    return state;
+}
+
+const cart = (state = [], action) => {
+  if(action.type === 'ADD_TO_CART'){
+    return[...state, action.payload];
+  } else if (action.type === 'CLEAR_CART'){
+    return [];
+  } 
+  // else if (action.type === 'REMOVE_ITEM'){
+  //   return [...state,
+  //   cart:state.items.filter(item => item !== action.payload) ]
+  // }
+  return state;
+}
 
 const orderId = (state = 0, action)=>{
     console.log(`I'm a reducer!`)
@@ -60,6 +79,8 @@ const storeInstance = createStore(
         {
             orderId,
             orderList,
+            pizzas,
+            cart,
             //OTHER REDUCERS ADDED HERE
         }
     ),
